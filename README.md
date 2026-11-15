@@ -1,20 +1,29 @@
-# Probabilistic Generative Paintings: City at Night & Starry Night Sky
+# Probabilistic Generative Models: City at Night & Starry Night Sky
 
-An interactive exploration of probabilistic programming and generative art, translating statistical distributions into visual stories. Built as two distinct generative models—**City at Night** and **Starry Night Sky**—each canvas renders a brand-new scene on every sample by drawing from parameterized probability distributions[cite: 7, 15, 18].
+An interactive exploration of probabilistic programming and generative art, translating statistical distributions into visual stories. Built as two distinct generative models from Stanford's **Probability for Artificial Intelligence (PAI)** course—**City at Night** and **Starry Night Sky**—each canvas renders a brand-new scene on every sample by drawing from parameterized probability distributions[cite: 7, 15, 18].
 
 ---
 
 ## 1. City at Night
 
-A generative streetscape of 24 buildings where architectural purpose drives nighttime lighting patterns[cite: 2, 3]. Rather than treating every window independently with a single global probability, the model uses a hierarchical structure[cite: 1, 2, 3]:
+A generative streetscape of 24 buildings where architectural purpose drives nighttime lighting patterns[cite: 2, 3]. Rather than treating every window independently, the model uses a hierarchical structure[cite: 1, 2, 3]:
 
-* **Building Height (`NumFloors`):** Each of the 24 buildings independently samples a discrete uniform integer height between 7 and 16 floors[cite: 2, 3].
+* **Building Height (`NumFloors`):** Each building independently samples a discrete uniform height between 7 and 16 floors[cite: 2, 3].
 * **Building Type (`Bernoulli`):** Each building flips a weighted coin controlled by parameter $\theta_3$ (*"Chance a building is an office"*)[cite: 5, 7]. 
-  * **Office Towers:** Low probability of lit windows, creating dark silhouettes late at night[cite: 2, 7].
+  * **Office Towers:** Low probability of lit windows, creating dark silhouettes[cite: 2, 7].
   * **Residential Apartments:** High probability of lit windows, producing bright, lived-in towers[cite: 2, 7].
-* **Window Lighting:** Conditioned on the building's type, each floor/window flips its own coin to determine whether it is illuminated[cite: 2, 3].
+* **Window Lighting:** Conditioned on building type, each floor flips its own coin to determine illumination[cite: 2, 3].
 
-This two-stage hierarchy reproduces the bimodal distribution seen in real cityscapes—where most buildings are either nearly dark or brightly lit, rather than every building hovering around the same average brightness[cite: 1, 3, 5].
+### Visuals & Model Parameters
+<p float="left">
+  <img src="art model-1/1.png" width="48%" alt="City at Night Canvas Comparison" />
+  <img src="art model-2/2.png" width="48%" alt="City Model Parameters" />
+</p>
+
+<p float="left">
+  <img src="art model-3/3.png" width="48%" alt="Window Distribution Histogram" />
+  <img src="art model-4/4.png" width="48%" alt="Custom Color Palettes" />
+</p>
 
 ---
 
@@ -22,11 +31,23 @@ This two-stage hierarchy reproduces the bimodal distribution seen in real citysc
 
 A generative cosmos on a $360 \times 360$ canvas that pairs spatial uniformity with a heavy-tailed size distribution and size-conditioned color mapping[cite: 10, 12, 16]:
 
-* **Spatial Coordinates (`X`, `Y`):** For a set number of stars (`NumStars`, default 200), each star independently samples continuous uniform coordinates across the $360 \times 360$ sky[cite: 10, 11].
-* **Heavy-Tailed Star Sizing (`USize` $\rightarrow$ `Radius`):** Each star draws a uniform helper variable $U \in [0, 1]$ and transforms it via an inverse power-law rule controlled by two parameters[cite: 11, 12, 15]:
-  * $\theta_2$ (*Smallest star size*): Sets the baseline minimum radius (e.g., `1.5`)[cite: 15].
-  * $\theta_3$ (*How rare big stars are*): Controls the tail decay so that the vast majority of stars form a fine mist of tiny points while a rare few expand into dominant celestial giants[cite: 13, 14, 15].
-* **Size-Conditioned Color Mapping:** Rather than assigning colors purely at random, each star's palette index is linked to its generated radius[cite: 16]. Using a 5-swatch palette (such as the **Gold** theme featuring warm cream/pink accents alongside cool periwinkle-blue giants), smaller dust particles cluster in the lower indices while massive stars shift toward the upper-index focal tones[cite: 16, 18].
+* **Spatial Coordinates (`X`, `Y`):** For a set number of stars (`NumStars`, default 200), each star independently samples continuous uniform coordinates across the sky[cite: 10, 11].
+* **Heavy-Tailed Star Sizing (`USize` $\rightarrow$ `Radius`):** Each star draws a uniform helper variable and transforms it via an inverse power-law rule controlled by two parameters[cite: 11, 12, 15]:
+  * $\theta_2$ (*Smallest star size*): Sets the baseline minimum radius[cite: 15].
+  * $\theta_3$ (*How rare big stars are*): Controls tail decay so most stars remain tiny points while a rare few expand into dominant celestial giants[cite: 13, 14, 15].
+* **Size-Conditioned Color Mapping:** Each star's palette index is linked to its generated radius[cite: 16], mapping smaller dust particles to lower indices and massive focal stars toward cooler periwinkle/blue tones[cite: 16, 18].
+
+### Starry Canvas & Parameter Configuration
+<p float="left">
+  <img src="art model-2/1.png" width="48%" alt="Starry Night Sky Canvas" />
+  <img src="art model-2/2.png" width="48%" alt="Starry Model Parameters" />
+</p>
+
+### Generated Multi-Sample Variations
+<p float="left">
+  <img src="art model-2/3.jpg" width="48%" alt="Starry Samples Part 1" />
+  <img src="art model-2/4.jpg" width="48%" alt="Starry Samples Part 2" />
+</p>
 
 ---
 
