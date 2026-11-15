@@ -43,7 +43,6 @@ A generative cosmos on a $360 \times 360$ canvas that pairs spatial uniformity w
   <img src="art model-2/2.png" width="48%" alt="Starry Model Parameters" />
 </p>
 
-### Generated Multi-Sample Variations
 <p float="left">
   <img src="art model-2/3.jpg" width="48%" alt="Starry Samples Part 1" />
   <img src="art model-2/4.jpg" width="48%" alt="Starry Samples Part 2" />
