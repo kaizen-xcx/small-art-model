@@ -17,12 +17,12 @@ A generative streetscape of 24 buildings where architectural purpose drives nigh
 ### Visuals & Model Parameters
 <p float="left">
   <img src="art model-1/1.png" width="48%" alt="City at Night Canvas Comparison" />
-  <img src="art model-2/2.png" width="48%" alt="City Model Parameters" />
+  <img src="art model-1/2.png" width="48%" alt="City Model Parameters" />
 </p>
 
 <p float="left">
-  <img src="art model-3/3.png" width="48%" alt="Window Distribution Histogram" />
-  <img src="art model-4/4.png" width="48%" alt="Custom Color Palettes" />
+  <img src="art model-1/3.png" width="48%" alt="Window Distribution Histogram" />
+  <img src="art model-1/4.png" width="48%" alt="Custom Color Palettes" />
 </p>
 
 ---
